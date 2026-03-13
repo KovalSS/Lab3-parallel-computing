@@ -22,7 +22,6 @@ public class ThreadPool {
         taskQueue2 = new Queue();
         workers = new ArrayList<>();
 
-        // 4 робітники: по 2 на кожну чергу
         for (int i = 1; i <= 2; i++) {
             workers.add(new Worker(taskQueue1, "Worker-Q1-" + i));
             workers.add(new Worker(taskQueue2, "Worker-Q2-" + i));
@@ -97,7 +96,6 @@ public class ThreadPool {
 
     public void printMetrics() {
         System.out.println("\n====== SYSTEM METRICS ======");
-        // 4 воркери + 1 main (генератори зазвичай вмирають до виклику цього методу)
         System.out.println("Total worker threads created: " + workers.size());
 
         double avgWaitTime = waitCycles.get() == 0 ? 0 : (double) totalThreadWaitTimeMs.get() / waitCycles.get();
