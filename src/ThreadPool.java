@@ -143,9 +143,14 @@ public class ThreadPool {
 
                     task.run();
 
+
+
+                    if (Thread.currentThread().isInterrupted()) {
+                        System.out.println("[" + getName() + "] task #" + task.getId() + " was interrupted halfway!");
+                        break;
+                    }
                     totalTaskExecutionTimeMs.addAndGet(task.getExecutionTime() * 1000L);
                     completedTasksCount.incrementAndGet();
-
                     System.out.println("[" + getName() + "] finished task #" + task.getId() + ".");
 
                 } catch (InterruptedException e) {
