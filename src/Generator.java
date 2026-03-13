@@ -21,7 +21,7 @@ public class Generator implements Runnable {
                 int newTaskId = taskIdCounter.getAndIncrement();
                 Task newTask = new Task(newTaskId);
                 pool.submit(newTask);
-                int sleepTimeMs = ThreadLocalRandom.current().nextInt(1000, 4001);
+                int sleepTimeMs = ThreadLocalRandom.current().nextInt(500, 5001);
                 Thread.sleep(sleepTimeMs);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
